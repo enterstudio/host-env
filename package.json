@@ -1,0 +1,30 @@
+{
+  "name": "host-env",
+  "version": "1.0.0",
+  "description": "Get information about the host environment that Node.js is running in",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zeit/host-env.git"
+  },
+  "keywords": [
+    "host",
+    "env",
+    "environment",
+    "process",
+    "platform",
+    "arch",
+    "modules",
+    "abi",
+    "version"
+  ],
+  "author": "Nathan Rajlich <nate@zeit.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeit/host-env/issues"
+  },
+  "homepage": "https://github.com/zeit/host-env#readme"
+}
