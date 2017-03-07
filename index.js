@@ -102,7 +102,7 @@ function getHumanEnvironment(parts = getEnvironmentTuple()) {
   let runtime = getHumanNodeVersion(parts[2])
 
   if (parts.length !== 3) {
-    return 'Unknown environment (' + binding + ')';
+    return 'Unknown environment (' + parts.join(', ') + ')';
   }
 
   if (!platform) {
