@@ -1,3 +1,5 @@
+"use strict"
+
 /**
  * Helper functions for determining the "environment" that
  * ace-client is running on.
