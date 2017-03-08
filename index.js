@@ -29,8 +29,8 @@ exports.getHumanNodeVersion = getHumanNodeVersion
  *
  * @api public
  */
-function getHumanPlatform(platform = getPlatform()) {
-  switch (platform) {
+function getHumanPlatform(platform) {
+  switch (platform || getPlatform()) {
     case 'darwin': return 'MacOS'
     case 'freebsd': return 'FreeBSD'
     case 'openbsd': return 'OpenBSD'
@@ -50,8 +50,8 @@ function getHumanPlatform(platform = getPlatform()) {
  *
  * @api public
  */
-function getHumanArch(arch = getArch()) {
-  switch (arch) {
+function getHumanArch(arch) {
+  switch (arch || getArch()) {
     case 'armv6l': return 'ARM v6l'
     case 'armv7l': return 'ARM v7l'
     case 'ia32': return '32-bit'
@@ -72,8 +72,8 @@ function getHumanArch(arch = getArch()) {
  *
  * @api public
  */
-function getHumanNodeVersion(abi = getABI()) {
-  switch (parseInt(abi, 10)) {
+function getHumanNodeVersion(abi) {
+  switch (parseInt(abi || getABI(), 10)) {
     case 11: return 'Node 0.10.x';
     case 14: return 'Node 0.12.x';
     case 42: return 'io.js 1.x';
@@ -98,13 +98,14 @@ function getHumanNodeVersion(abi = getABI()) {
  *
  * @api public
  */
-function getHumanEnvironment(parts = getEnvironmentTuple()) {
+function getHumanEnvironment(_parts) {
+  let parts = _parts || getEnvironmentTuple()
   let platform = getHumanPlatform(parts[0])
   let arch = getHumanArch(parts[1])
   let runtime = getHumanNodeVersion(parts[2])
 
   if (parts.length !== 3) {
-    return 'Unknown environment (' + parts.join(', ') + ')';
+    return 'Unknown environment (' + JSON.stringify(parts) + ')';
   }
 
   if (!platform) {
@@ -127,11 +128,12 @@ function getHumanEnvironment(parts = getEnvironmentTuple()) {
 /**
  *
  */
-function getPlatform (_platform = process.platform) {
-  const platform = [_platform]
-  const variant = getPlatformVariant(_platform)
-  if (variant) platform.push(variant)
-  return platform.join('_')
+function getPlatform (_platform) {
+  const platform = _platform || process.platform
+  const platformParts = [platform]
+  const variant = getPlatformVariant(platform)
+  if (variant) platformParts.push(variant)
+  return platformParts.join('_')
 }
 
 /**
@@ -165,8 +167,8 @@ function getPlatformVariant(platform) {
 /**
  *
  */
-function getArch(_arch = process.arch) {
-  let arch = process.arch
+function getArch(_arch) {
+  let arch = _arch || process.arch
   if ('arm' === arch) {
     arch += getArmVersion()
   }
@@ -180,7 +182,8 @@ function getArch(_arch = process.arch) {
  *
  * So we want to pluck out the final part (v6l)
  */
-function getArmVersion(cpus = os.cpus()) {
+function getArmVersion(_cpus) {
+  const cpus = _cpus || os.cpus()
   const first = cpus[0]
   const match = first.model.match(/\((.+)\)\s*$/)
   return match[1]
