@@ -8,8 +8,8 @@
  * all the "binary" parts of the logic: https://git.io/vyvFG
  */
 
-const fs = require('fs')
-const os = require('os')
+var fs = require('fs')
+var os = require('os')
 
 exports = module.exports = getEnvironmentTuple
 exports.getPlatform = getPlatform
@@ -99,10 +99,10 @@ function getHumanNodeVersion(abi) {
  * @api public
  */
 function getHumanEnvironment(_parts) {
-  let parts = _parts || getEnvironmentTuple()
-  let platform = getHumanPlatform(parts[0])
-  let arch = getHumanArch(parts[1])
-  let runtime = getHumanNodeVersion(parts[2])
+  var parts = _parts || getEnvironmentTuple()
+  var platform = getHumanPlatform(parts[0])
+  var arch = getHumanArch(parts[1])
+  var runtime = getHumanNodeVersion(parts[2])
 
   if (parts.length !== 3) {
     return 'Unknown environment (' + JSON.stringify(parts) + ')';
@@ -129,9 +129,9 @@ function getHumanEnvironment(_parts) {
  *
  */
 function getPlatform (_platform) {
-  const platform = _platform || process.platform
-  const platformParts = [platform]
-  const variant = getPlatformVariant(platform)
+  var platform = _platform || process.platform
+  var platformParts = [platform]
+  var variant = getPlatformVariant(platform)
   if (variant) platformParts.push(variant)
   return platformParts.join('_')
 }
@@ -148,7 +148,7 @@ function getPlatformVariant(platform) {
   }
 
   try {
-    const contents = fs.readFileSync(process.execPath)
+    var contents = fs.readFileSync(process.execPath)
 
     // Buffer.indexOf was added in v1.5.0 so cast to string for old node
     // Delay contents.toStrings because it's expensive
@@ -168,7 +168,7 @@ function getPlatformVariant(platform) {
  *
  */
 function getArch(_arch) {
-  let arch = _arch || process.arch
+  var arch = _arch || process.arch
   if ('arm' === arch) {
     arch += getArmVersion()
   }
@@ -183,9 +183,9 @@ function getArch(_arch) {
  * So we want to pluck out the final part (v6l)
  */
 function getArmVersion(_cpus) {
-  const cpus = _cpus || os.cpus()
-  const first = cpus[0]
-  const match = first.model.match(/\((.+)\)\s*$/)
+  var cpus = _cpus || os.cpus()
+  var first = cpus[0]
+  var match = first.model.match(/\((.+)\)\s*$/)
   return match[1]
 }
 
