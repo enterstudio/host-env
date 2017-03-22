@@ -74,17 +74,17 @@ function getHumanArch(arch) {
  */
 function getHumanNodeVersion(abi) {
   switch (parseInt(abi || getABI(), 10)) {
-    case 11: return 'Node 0.10.x';
-    case 14: return 'Node 0.12.x';
-    case 42: return 'io.js 1.x';
-    case 43: return 'io.js 1.1.x';
-    case 44: return 'io.js 2.x';
-    case 45: return 'io.js 3.x';
-    case 46: return 'Node.js 4.x';
-    case 47: return 'Node.js 5.x';
-    case 48: return 'Node.js 6.x';
-    case 51: return 'Node.js 7.x';
-    default: return false;
+    case 11: return 'Node 0.10.x'
+    case 14: return 'Node 0.12.x'
+    case 42: return 'io.js 1.x'
+    case 43: return 'io.js 1.1.x'
+    case 44: return 'io.js 2.x'
+    case 45: return 'io.js 3.x'
+    case 46: return 'Node.js 4.x'
+    case 47: return 'Node.js 5.x'
+    case 48: return 'Node.js 6.x'
+    case 51: return 'Node.js 7.x'
+    default: return false
   }
 }
 
@@ -105,24 +105,24 @@ function getHumanEnvironment(_parts) {
   var runtime = getHumanNodeVersion(parts[2])
 
   if (parts.length !== 3) {
-    return 'Unknown environment (' + JSON.stringify(parts) + ')';
+    return 'Unknown environment (' + JSON.stringify(parts) + ')'
   }
 
   if (!platform) {
-    platform = 'Unsupported platform (' + parts[0] + ')';
+    platform = 'Unsupported platform (' + parts[0] + ')'
   }
 
   if (!arch) {
-    arch = 'Unsupported architecture (' + parts[1] + ')';
+    arch = 'Unsupported architecture (' + parts[1] + ')'
   }
 
   if (!runtime) {
-    runtime = 'Unsupported runtime (' + parts[2] + ')';
+    runtime = 'Unsupported runtime (' + parts[2] + ')'
   }
 
   return [
     platform, arch, 'with', runtime,
-  ].join(' ');
+  ].join(' ')
 }
 
 /**
@@ -157,11 +157,11 @@ function getPlatformVariant(platform) {
     }
 
     if (contents.indexOf('libc.musl-x86_64.so.1') !== -1) {
-      return 'musl';
+      return 'musl'
     }
   } catch (err) { } // eslint-disable-line no-empty
 
-  return '';
+  return ''
 }
 
 /**
