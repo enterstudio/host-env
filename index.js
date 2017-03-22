@@ -167,10 +167,10 @@ function getPlatformVariant(platform) {
 /**
  *
  */
-function getArch(_arch) {
+function getArch(_arch, _cpus) {
   var arch = _arch || process.arch
   if ('arm' === arch) {
-    arch += getArmVersion()
+    arch += getArmVersion(_cpus)
   }
   return arch
 }
