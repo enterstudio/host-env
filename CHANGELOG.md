@@ -1,3 +1,9 @@
+1.1.0 / 2017-04-03
+==================
+
+* [[`dcde27bcb3`](https://github.com/zeit/host-env/commit/dcde27bcb3)] - make `getHumanEnvironment()` support strings with "-" (Nathan Rajlich)
+* [[`5c35214724`](https://github.com/zeit/host-env/commit/5c35214724)] - add more tests (Nathan Rajlich)
+
 1.0.2 / 2017-03-08
 ==================
 
