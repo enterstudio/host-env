@@ -56,6 +56,19 @@ describe('getHumanNodeVersion', function () {
   })
 })
 
+describe('getHumanEnvironment', function () {
+  it('should work with Arrays', function () {
+    const env = ['darwin', 'x64', '51']
+    const expected = 'MacOS 64-bit with Node.js 7.x'
+    assert.equal(expected, hostEnv.getHumanEnvironment(env))
+  })
+  it('should work with Strings', function () {
+    const env = ['linux_musl', 'x86', '48']
+    const expected = 'Linux/musl 32-bit with Node.js 6.x'
+    assert.equal(expected, hostEnv.getHumanEnvironment(env))
+  })
+})
+
 describe('getArch', function () {
   var equals = [
     { input: 'x64', expected: 'x64' },

@@ -99,14 +99,22 @@ function getHumanNodeVersion(abi) {
  * @api public
  */
 function getHumanEnvironment(_parts) {
-  var parts = _parts || getEnvironmentTuple()
-  var platform = getHumanPlatform(parts[0])
-  var arch = getHumanArch(parts[1])
-  var runtime = getHumanNodeVersion(parts[2])
+  var parts
+  if ('string' === typeof _parts) {
+    parts = _parts.split('-')
+  } else if (_parts) {
+    parts = _parts
+  } else {
+    parts = getEnvironmentTuple()
+  }
 
   if (parts.length !== 3) {
     return 'Unknown environment (' + JSON.stringify(parts) + ')'
   }
+
+  var platform = getHumanPlatform(parts[0])
+  var arch = getHumanArch(parts[1])
+  var runtime = getHumanNodeVersion(parts[2])
 
   if (!platform) {
     platform = 'Unsupported platform (' + parts[0] + ')'
