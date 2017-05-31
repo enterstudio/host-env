@@ -1,3 +1,9 @@
+
+1.1.1 / 2017-05-31
+==================
+
+* [[`d679d95878`](https://github.com/zeit/host-env/commit/d679d95878)] - add ABI for Node.js 8 (Nathan Rajlich)
+
 1.1.0 / 2017-04-03
 ==================
 
