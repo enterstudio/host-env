@@ -46,7 +46,8 @@ describe('getHumanNodeVersion', function () {
     '46': 'Node.js 4.x',
     '47': 'Node.js 5.x',
     '48': 'Node.js 6.x',
-    '51': 'Node.js 7.x'
+    '51': 'Node.js 7.x',
+    '57': 'Node.js 8.x'
   }
   Object.keys(equals).forEach(function (version) {
     var expected = equals[version]
