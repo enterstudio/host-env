@@ -1,3 +1,8 @@
+1.1.2 / 2017-05-31
+==================
+
+* [[`ccad83963f`](https://github.com/zeit/host-env/commit/ccad83963f)] - add ABI for Node.js 9 (Nathan Rajlich)
+* [[`e070bba380`](https://github.com/zeit/host-env/commit/e070bba380)] - test Node 8 on Travis-CI (Nathan Rajlich)
 
 1.1.1 / 2017-05-31
 ==================
